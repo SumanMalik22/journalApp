@@ -17,6 +17,8 @@ target/
 journalApp.log
 .gitattributes
 .sonar
+.properties
+.yaml
 ### IntelliJ IDEA ###
 .idea
 *.iws
