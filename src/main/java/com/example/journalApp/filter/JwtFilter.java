@@ -28,6 +28,11 @@ public class JwtFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        return request.getServletPath().startsWith("/auth/google/");
+    }
+
+    @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
         String authorizationHeader = request.getHeader("Authorization");
         String username = null;

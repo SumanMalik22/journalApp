@@ -33,6 +33,7 @@ public class SpringSecurity {
 
         return http.authorizeHttpRequests(request -> request
                         .requestMatchers("/public/**").permitAll()
+                        .requestMatchers("/auth/google/**").permitAll()
                         .requestMatchers("/swagger-ui/**",
                                 "/swagger-ui.html",
                                 "/v3/api-docs/**").permitAll()

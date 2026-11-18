@@ -12,13 +12,13 @@ target/
 .settings
 .springBeans
 .sts4-cache
-.yml
-.log
+*.yml
+*.log
 journalApp.log
 .gitattributes
 .sonar
-.properties
-.yaml
+*.properties
+*.yaml
 ### IntelliJ IDEA ###
 .idea
 *.iws
