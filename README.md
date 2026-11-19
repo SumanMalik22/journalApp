@@ -126,15 +126,6 @@ GET /journal/{userName}
 
 The actual request body and other endpoint details can be found in the controller classes.
 
-## 📚 Learning Resource
-
-This project was developed while following the following YouTube playlist:
-
-**Spring Boot Mastery: From Basics to Advanced**
-
-[Watch the Complete Spring Boot Tutorial Playlist](https://youtube.com/playlist?list=PLA3GkZPtsafacdBLdd3p1DyRd5FGfr3Ue)
-
-The tutorial series helped me understand and practice Spring Boot concepts and backend development.
 
 ## 🎯 What I Learned
 
