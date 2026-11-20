@@ -1,70 +1,269 @@
+ <div align="center">
+
 # 📔 Journal App – Spring Boot REST API
 
-A backend application built using **Java and Spring Boot** that allows users to create, manage, and securely access their personal journal entries.
+**A secure RESTful backend application for managing personal journal entries using Java, Spring Boot, MongoDB, and Spring Security.**
 
-This project was developed as a hands-on learning project while following a Spring Boot tutorial series. During development, I worked with REST API development, database integration, authentication, and backend application architecture.
+Manage user accounts, create journal entries, and protect personal data through authentication and role-based authorization.
+
+![Java](https://img.shields.io/badge/Java-17-orange?logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-Backend-6DB33F?logo=springboot&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?logo=mongodb&logoColor=white)
+![Spring Security](https://img.shields.io/badge/Spring%20Security-Authentication-6DB33F?logo=springsecurity&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-Build-C71A36?logo=apachemaven&logoColor=white)
+
+</div>
+
+---
+
+## 📌 Table of Contents
+
+- [✨ Project Overview](#-project-overview)
+- [🚀 Features](#-features)
+- [🔄 Application Workflow](#-application-workflow)
+- [🧰 Tech Stack](#-tech-stack)
+- [🏗️ Project Architecture](#️-project-architecture)
+- [🗄️ Database Design](#️-database-design)
+- [🔐 Security](#-security)
+- [⚙️ Getting Started](#️-getting-started)
+- [🧪 API Testing](#-api-testing)
+- [📚 What I Learned](#-what-i-learned)
+- [🛣️ Future Improvements](#️-future-improvements)
+- [👨‍💻 Author](#-author)
+
+---
+
+## ✨ Project Overview
+
+The **Journal App** is a backend application developed using Java and Spring Boot that allows users to maintain their personal journal entries through REST APIs.
+
+Users can create accounts, authenticate securely, and perform CRUD (Create, Read, Update, Delete) operations on their journal entries.
+
+The application uses MongoDB for data storage and Spring Security to manage authentication and authorization.
+
+This project was developed as a hands-on learning project while following a Spring Boot tutorial series, with practical experience in backend development, database integration, security configuration, and application architecture.
 
 ## 🚀 Features
 
-- **User Management:** Create and manage user accounts.
-- **Journal Management:** Create, retrieve, update, and delete journal entries.
-- **MongoDB Integration:** Store user information and journal entries using MongoDB.
-- **Spring Security:** Secure application endpoints and manage authentication.
-- **Password Encryption:** Use BCrypt password encoding to protect user passwords.
-- **User Authorization:** Apply role-based access control.
-- **RESTful APIs:** Implement backend endpoints using Spring Boot and Spring MVC.
-- **API Documentation:** Include OpenAPI/Swagger dependencies for API documentation.
-- **Additional Integrations:** Explore technologies such as Kafka, Redis, JWT, OAuth2, and email services.
+### 👤 User Management
+- Create and manage user accounts.
+- Store user information in MongoDB.
+- Associate journal entries with individual users.
 
-## 🛠️ Technologies Used
+### 📔 Journal Management
+- Create new journal entries.
+- Retrieve journal entries.
+- Update existing journal entries.
+- Delete journal entries.
+- Associate journal entries with their respective users.
+
+### 🔐 Authentication & Authorization
+- Secure application endpoints using Spring Security.
+- Authenticate users using Spring Security authentication mechanisms.
+- Encrypt passwords using BCrypt.
+- Implement role-based access control.
+- Restrict access to protected endpoints.
+
+### 🗄️ Database Integration
+- MongoDB integration using Spring Data MongoDB.
+- Store users and journal entries in separate collections.
+- Manage relationships between users and journal entries.
+
+### 📖 API Development
+- Build RESTful APIs using Spring Boot and Spring MVC.
+- Handle HTTP requests and responses.
+- Use controller, service, and repository layers.
+- Include OpenAPI/Swagger dependencies for API documentation.
+
+---
+
+## 🔄 Application Workflow
+
+The application follows this general workflow:
+
+```text
+          USER
+            |
+            ▼
+      Create Account
+            |
+            ▼
+      User Authentication
+            |
+            ▼
+       Spring Security
+            |
+            ▼
+       Access Journal API
+            |
+            ▼
+    ┌─────────────────────┐
+    │   Journal Service   │
+    └─────────────────────┘
+            |
+            ▼
+      MongoDB Database
+            |
+            ▼
+     Journal Operations
+            |
+      ┌─────┼─────┐
+      ▼     ▼     ▼
+    Create Read Update
+                  |
+                  ▼
+                Delete
+```
+
+---
+
+## 🧰 Tech Stack
+
+### Core Technologies
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=java,spring,mongodb,maven,idea,postman,git,github&theme=dark" alt="Java, Spring, MongoDB, Maven, IntelliJ IDEA, Postman, Git and GitHub" />
+
+</div>
 
 | Technology | Purpose |
 |---|---|
-| Java 17 | Programming language |
-| Spring Boot | Backend application framework |
-| Spring MVC | REST API development |
-| Spring Security | Authentication and authorization |
-| Spring Data MongoDB | Database integration |
-| MongoDB | NoSQL database |
-| Maven | Dependency management and build automation |
-| Lombok | Reduce boilerplate code |
-| JWT | Token-based authentication support |
-| Apache Kafka | Messaging integration |
-| Redis | Caching integration |
-| Swagger / OpenAPI | API documentation |
+| **Java 17** | Core programming language |
+| **Spring Boot** | Backend application framework |
+| **Spring MVC** | REST API development |
+| **Spring Security** | Authentication and authorization |
+| **Spring Data MongoDB** | Database integration |
+| **MongoDB** | NoSQL database |
+| **Maven** | Dependency management and build automation |
+| **Lombok** | Reducing boilerplate code |
+| **Postman** | API testing |
+| **IntelliJ IDEA** | Development environment |
 
-*Some technologies are included as dependencies for additional integration and learning; their implementation may vary across project versions.*
+### Additional Integrations & Learning
+
+The project also explores dependencies and integrations involving:
+
+- Apache Kafka – Messaging and asynchronous communication.
+- Redis – Caching.
+- JWT – Token-based authentication.
+- OAuth2 – Authorization framework.
+- Swagger / OpenAPI – API documentation.
+- Email services – Email integration.
+
+*These are additional learning areas and dependencies; their implementation and availability depend on the project version.*
+
+---
 
 ## 🏗️ Project Architecture
 
-The application follows a layered architecture to separate responsibilities and make the code easier to maintain.
+The application follows a layered architecture to separate responsibilities and improve maintainability.
 
 ```text
 src/main/java
-    └── com.example.journalApp
-          │
-          ├── config
-          │     └── Security Configuration
-          │
-          ├── controller
-          │     └── REST API Endpoints
-          │
-          ├── entity
-          │     ├── User
-          │     └── JournalEntry
-          │
-          ├── repository
-          │     └── MongoDB Data Access
-          │
-          ├── service
-          │     └── Business Logic
-          │
-          └── JournalAppApplication.java
+│
+└── com.example.journalApp
+    │
+    ├── config
+    │   └── Spring Security Configuration
+    │
+    ├── controller
+    │   ├── UserController
+    │   ├── JournalEntryController
+    │   └── PublicController
+    │
+    ├── entity
+    │   ├── User
+    │   └── JournalEntry
+    │
+    ├── repository
+    │   ├── UserRepository
+    │   └── JournalEntryRepository
+    │
+    ├── service
+    │   ├── UserService
+    │   └── JournalEntryService
+    │
+    ├── security
+    │   └── UserDetailsServiceImpl
+    │
+    └── JournalAppApplication.java
 ```
+
+### Layer Responsibilities
+
+| Layer | Responsibility |
+|---|---|
+| Controller | Handles incoming HTTP requests and API responses |
+| Service | Contains application business logic |
+| Repository | Performs MongoDB database operations |
+| Entity | Defines the application's data models |
+| Config | Configures application security and other settings |
+| Security | Loads user details for authentication |
+
+---
+
+## 🗄️ Database Design
+
+The application uses MongoDB as its primary database.
+
+Two main collections are used:
+
+### 1. Users Collection
+
+Stores user account information.
+
+Example document structure:
+
+```json
+{
+  "_id": "ObjectId",
+  "userName": "john",
+  "password": "BCrypt-encoded-password",
+  "roles": ["USER"],
+  "journalEntries": []
+}
+```
+
+### 2. Journal Entries Collection
+
+Stores individual journal entries.
+
+Example document structure:
+
+```json
+{
+  "_id": "ObjectId",
+  "title": "My First Journal",
+  "content": "Today I learned Spring Boot.",
+  "date": "2026-11-20T10:30:00"
+}
+```
+
+*These are illustrative document structures based on the application's data models.*
+
+---
+
+## 🔐 Security
+
+Security is an important part of this application.
+
+The project uses Spring Security to protect endpoints and manage user access.
+
+Key security concepts explored:
+
+- **BCrypt Password Encoding:** Passwords are encoded before storage.
+- **Authentication:** Verifies user credentials.
+- **Authorization:** Controls access based on assigned roles.
+- **UserDetailsService:** Loads user information for authentication.
+- **SecurityFilterChain:** Configures HTTP security rules.
+- **DaoAuthenticationProvider:** Connects user-detail retrieval and password verification.
+
+---
 
 ## ⚙️ Getting Started
 
-Follow these instructions to run the project locally.
+Follow these steps to run the application locally.
 
 ### Prerequisites
 
@@ -90,9 +289,26 @@ cd journalApp
 
 ### 3. Configure MongoDB
 
-Configure your MongoDB connection in `src/main/resources/application.yml`.
+Open:
 
-Use your own database connection details. Do not commit database credentials or secret keys to GitHub.
+```text
+src/main/resources/application.yml
+```
+
+Configure your MongoDB connection details.
+
+Example:
+
+```yaml
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+```
+
+Set the `MONGODB_URI` environment variable with your own connection string.
+
+**Important:** Never commit database credentials, passwords, or secret keys to GitHub.
 
 ### 4. Build the Project
 
@@ -106,28 +322,28 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-The application will start using the port configured in your Spring Boot configuration.
+The application will start on the configured Spring Boot server port.
+
+---
 
 ## 🧪 API Testing
 
 You can test the REST APIs using Postman.
 
-Example endpoint for user registration:
+### Example API Endpoints
 
-```http
-POST /public/create-user
-```
+| HTTP Method | Endpoint | Purpose |
+|---|---|---|
+| POST | `/public/create-user` | Register a new user |
+| GET | `/journal/{userName}` | Retrieve a user's journal entries |
 
-Example endpoint for retrieving a user's journal entries:
+Additional journal operations include creating, updating, and deleting journal entries.
 
-```http
-GET /journal/{userName}
-```
+The actual request bodies, authentication requirements, and complete endpoint mappings can be found in the controller classes.
 
-The actual request body and other endpoint details can be found in the controller classes.
+---
 
-
-## 🎯 What I Learned
+## 📚 What I Learned
 
 Through this project, I gained practical experience with:
 
@@ -135,10 +351,26 @@ Through this project, I gained practical experience with:
 - Understanding layered application architecture.
 - Working with MongoDB and Spring Data MongoDB.
 - Implementing authentication and authorization using Spring Security.
+- Using BCrypt for password encoding.
+- Understanding Spring Security's authentication components.
 - Managing user accounts and journal entries.
-- Understanding dependency injection and service-layer business logic.
-- Working with Maven dependencies and application configuration.
-- Exploring backend integrations and asynchronous messaging.
+- Working with dependency injection and service-layer business logic.
+- Managing Maven dependencies and application configuration.
+- Exploring asynchronous messaging and additional backend integrations.
+
+---
+
+## 🛣️ Future Improvements
+
+- Implement JWT-based authentication for stateless API security.
+- Expand API documentation using Swagger/OpenAPI.
+- Improve exception handling and API response structures.
+- Add unit and integration tests.
+- Implement additional Kafka-based asynchronous workflows.
+- Add caching using Redis.
+- Develop a frontend interface for interacting with the APIs.
+
+---
 
 ## 👨‍💻 Author
 
@@ -151,4 +383,10 @@ B.Sc. Information Technology Graduate | Java Developer
 
 ---
 
-⭐ If you find this project useful, feel free to explore the repository!
+<div align="center">
+
+**⭐ If you find this project useful, consider giving the repository a star!**
+
+Built with Java, Spring Boot, and a passion for backend development.
+
+</div>
